@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  download_data:
+    cmd: python .\scripts\data_prep.py
+    deps:
+    - path: .\scripts\data_prep.py
+      hash: md5
+      md5: 219b5953e9e42e072d4b89fbd8f31cbe
+      size: 962
+    outs:
+    - path: .\data\X_test.csv
+      hash: md5
+      md5: 6d6987925f8a94cccfe0019066774e82
+      size: 2389
+    - path: .\data\X_train.csv
+      hash: md5
+      md5: 14838e0f3c37b7ea48fe98b74b3a3cc2
+      size: 9539
+    - path: .\data\y_test.csv
+      hash: md5
+      md5: afef6c9a77d3d97bf966d3d80680a3c4
+      size: 318
+    - path: .\data\y_train.csv
+      hash: md5
+      md5: 12696310647ca7f4a99fc938eb5552b7
+      size: 1250
+  train_model:
+    cmd: python .\scripts\train_model.py
+    deps:
+    - path: .\data\X_test.csv
+      hash: md5
+      md5: 6d6987925f8a94cccfe0019066774e82
+      size: 2389
+    - path: .\data\X_train.csv
+      hash: md5
+      md5: 14838e0f3c37b7ea48fe98b74b3a3cc2
+      size: 9539
+    - path: .\scripts\train_model.py
+      hash: md5
+      md5: 90b89164f29d82786af5829f3a73ad5b
+      size: 520
+    outs:
+    - path: .\models\train_model\model.joblib
+      hash: md5
+      md5: eed839380e4dc5c73ffd63b300337030
+      size: 1471
